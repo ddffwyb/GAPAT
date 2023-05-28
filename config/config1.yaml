@@ -1,0 +1,19 @@
+vs: 1500.0
+fs: 40.0e+6
+angle_cos_limit: 0.50
+num_channels: 256
+num_steps: 1380
+num_times: 2048
+res: 0.20e-3
+x_start: -10.0e-3
+x_end: 110.0e-3
+y_start: -10.0e-3
+y_end: 110.0e-3
+z_start: 10.0e-3
+z_end: 50.0e-3
+detector_interval_x: 0.10e-3
+detector_interval_y: 0.50e-3
+data_path: !!str data/synthetic_planar_array
+data_type: int16
+device: gpu
+num_devices: 2
