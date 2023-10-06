@@ -4,8 +4,6 @@ import os
 import numpy as np
 import taichi as ti
 
-from .algorithms import recon_kernel
-
 
 def read_all_dat_into_a_matrix(data_path, data_type, num_times, num_channels):
     """read all the .dat file in a directory into a matrix."""
@@ -20,6 +18,7 @@ def read_all_dat_into_a_matrix(data_path, data_type, num_times, num_channels):
             )
     data = np.concatenate(data, axis=0).astype(np.float32)
     data[:, num_times - 1] = 0
+    data[:, 0] = 0
     return data
 
 
@@ -45,7 +44,7 @@ def initialize_signal_recon(num_x, num_y, num_z):
     return signal_recon
 
 
-def recon_single(config, device_no):
+def recon_single(config, device_no, kernel):
     num_channels = config["num_channels"]
     num_steps = config["num_steps"]
     num_times = config["num_times"]
@@ -79,13 +78,13 @@ def recon_single(config, device_no):
         num_detectors, num_channels, detector_interval_x, detector_interval_y
     )
     signal_recon = initialize_signal_recon(num_x, num_y, num_z)
-    recon_kernel(
+    kernel(
         signal_backproj, detector_location, signal_recon, x_start, y_start, z[device_no]
     )
     return signal_recon
 
 
-def recon_multi(config):
+def recon_multi(config, kernel):
     num_devices = config["num_devices"]
     result = []
     pool = multiprocessing.Pool(processes=num_devices)
@@ -96,6 +95,7 @@ def recon_multi(config):
                 (
                     config,
                     i,
+                    kernel,
                 ),
             )
         )

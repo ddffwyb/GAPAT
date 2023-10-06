@@ -3,6 +3,7 @@ import time
 
 import scipy.io as sio
 
+from src.algorithms import recon_kernel_das
 from src.config import read_config
 from src.utils import recon_single, recon_multi
 
@@ -27,11 +28,12 @@ if __name__ == "__main__":
 
     config = read_config(config_path)
     num_devices = config["num_devices"]
+    kernel = recon_kernel_das
     start = time.time()
     if num_devices == 1:
-        signal_recon = recon_single(config, 0)
+        signal_recon = recon_single(config, 0, kernel)
     else:
-        signal_recon = recon_multi(config)
+        signal_recon = recon_multi(config, kernel)
     end = time.time()
     sio.savemat(result_path, {"signal_recon": signal_recon})
     print("Reconstruction time: {:.2f}s".format(end - start))

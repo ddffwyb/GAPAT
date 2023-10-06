@@ -1,5 +1,6 @@
 import numpy as np
 import taichi as ti
+import taichi_glsl as ts
 
 from .config import read_config
 
@@ -31,7 +32,7 @@ z = [z_start + i * (z_end - z_start) / num_devices for i in range(num_devices)]
 
 
 @ti.kernel
-def recon_kernel(
+def recon_kernel_das(
     signal_backproj: ti.types.ndarray(),
     detector_location: ti.types.ndarray(),
     signal_recon: ti.types.ndarray(),
@@ -44,6 +45,28 @@ def recon_kernel(
             dx = x_start + i * res - detector_location[n, 0]
             dy = y_start + j * res - detector_location[n, 1]
             dz = z_start + k * res - detector_location[n, 2]
-            d = ti.sqrt(dx * dx + dy * dy + dz * dz)
+            d = ts.length(ti.Vector([dx, dy, dz]))
             idx = ti.min(int(d / vs * fs), num_times - 1)
             signal_recon[i, j, k] += signal_backproj[n, idx] * dz / d**3
+
+
+@ti.kernel
+def recon_kernel_angle(
+    signal_backproj: ti.types.ndarray(),
+    detector_location: ti.types.ndarray(),
+    signal_recon: ti.types.ndarray(),
+    x_start: ti.f32,
+    y_start: ti.f32,
+    z_start: ti.f32,
+):
+    for i, j, k in ti.ndrange(num_x, num_y, num_z):
+        for n in ti.ndrange(num_detectors):
+            dx = x_start + i * res - detector_location[n, 0]
+            dy = y_start + j * res - detector_location[n, 1]
+            dz = z_start + k * res - detector_location[n, 2]
+            d = ts.length(ti.Vector([dx, dy, dz]))
+            angle_cos = dz / d
+            idx = ti.min(int(d / vs * fs), num_times - 1) * int(
+                angle_cos > angle_cos_limit
+            )
+            signal_recon[i, j, k] += signal_backproj[n, idx] * angle_cos / d**2

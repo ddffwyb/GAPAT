@@ -16,4 +16,4 @@ detector_interval_y: 0.50e-3
 data_path: !!str data/synthetic_planar_array
 data_type: int16
 device: gpu
-num_devices: 2
+num_devices: 1

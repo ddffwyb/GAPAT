@@ -3,3 +3,4 @@ opencv-python
 PyYAML
 scipy
 taichi
+taichi_glsl
