@@ -46,7 +46,7 @@ def recon_kernel_das(
             dy = y_start + j * res - detector_location[n, 1]
             dz = z_start + k * res - detector_location[n, 2]
             d = ts.length(ti.Vector([dx, dy, dz]))
-            idx = ti.min(int(d / vs * fs), num_times - 1)
+            idx = ti.min(int(d / vs * fs), num_times - 2)
             signal_recon[i, j, k] += signal_backproj[n, idx] * dz / d**3
 
 
@@ -66,7 +66,7 @@ def recon_kernel_angle(
             dz = z_start + k * res - detector_location[n, 2]
             d = ts.length(ti.Vector([dx, dy, dz]))
             angle_cos = dz / d
-            idx = ti.min(int(d / vs * fs), num_times - 1) * int(
+            idx = ti.min(int(d / vs * fs), num_times - 2) * int(
                 angle_cos > angle_cos_limit
             )
             signal_recon[i, j, k] += signal_backproj[n, idx] * angle_cos / d**2
@@ -88,13 +88,13 @@ def recon_kernel_fbp(
             dz = z_start + k * res - detector_location[n, 2]
             d = ts.length(ti.Vector([dx, dy, dz]))
             angle_cos = dz / d
-            idx = ti.min(int(d / vs * fs), num_times - 1) * int(
+            idx = ti.min(int(d / vs * fs), num_times - 2) * int(
                 angle_cos > angle_cos_limit
             )
             signal_recon[i, j, k] += (
                 (
                     signal_backproj[n, idx]
-                    - idx * (signal_backproj[n, idx] - signal_backproj[n, idx - 1])
+                    - idx * (signal_backproj[n, idx + 1] - signal_backproj[n, idx])
                 )
                 * angle_cos
                 / d**2
