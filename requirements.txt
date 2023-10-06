@@ -1,6 +1,6 @@
-numpy
-opencv-python
-PyYAML
-scipy
-taichi
-taichi_glsl
+numpy==1.21.5
+opencv-python==4.8.1.78
+PyYAML==6.0
+scipy==1.9.3
+taichi==1.2.2
+taichi_glsl==0.0.12

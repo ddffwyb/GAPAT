@@ -3,10 +3,10 @@ import time
 
 import scipy.io as sio
 
-from src.algorithms import recon_kernel_das
-from src.config import read_config
-from src.utils import recon_single, recon_multi
+from src.algorithms import recon_kernel_das, recon_kernel_angle, recon_kernel_fbp
+from src.utils import read_config, recon_single, recon_multi
 
+kernel = recon_kernel_fbp
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -28,7 +28,6 @@ if __name__ == "__main__":
 
     config = read_config(config_path)
     num_devices = config["num_devices"]
-    kernel = recon_kernel_das
     start = time.time()
     if num_devices == 1:
         signal_recon = recon_single(config, 0, kernel)

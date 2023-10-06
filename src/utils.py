@@ -3,6 +3,13 @@ import os
 
 import numpy as np
 import taichi as ti
+import yaml
+
+
+def read_config(path):
+    with open(path, "r") as f:
+        config = yaml.load(f, Loader=yaml.FullLoader)
+    return config
 
 
 def read_all_dat_into_a_matrix(data_path, data_type, num_times, num_channels):
@@ -17,8 +24,7 @@ def read_all_dat_into_a_matrix(data_path, data_type, num_times, num_channels):
                 .T
             )
     data = np.concatenate(data, axis=0).astype(np.float32)
-    data[:, num_times - 1] = 0
-    data[:, 0] = 0
+    data[:, [0, 1, num_times - 2, num_times - 1]] = 0
     return data
 
 
