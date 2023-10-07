@@ -1,3 +1,4 @@
+bm3d==4.0.1
 numpy==1.21.5
 opencv-python==4.8.1.78
 PyYAML==6.0

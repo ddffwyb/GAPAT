@@ -40,6 +40,9 @@ def recon_kernel_das(
     y_start: ti.f32,
     z_start: ti.f32,
 ):
+    """
+    Reconstruction kernel for Delay-and-Sum (DAS) algorithm.
+    """
     for i, j, k in ti.ndrange(num_x, num_y, num_z):
         for n in ti.ndrange(num_detectors):
             dx = x_start + i * res - detector_location[n, 0]
@@ -59,6 +62,9 @@ def recon_kernel_angle(
     y_start: ti.f32,
     z_start: ti.f32,
 ):
+    """
+    Reconstruction kernel for Delay-and-Sum (DAS) algorithm with receiving angle limit.
+    """
     for i, j, k in ti.ndrange(num_x, num_y, num_z):
         for n in ti.ndrange(num_detectors):
             dx = x_start + i * res - detector_location[n, 0]
@@ -81,6 +87,9 @@ def recon_kernel_fbp(
     y_start: ti.f32,
     z_start: ti.f32,
 ):
+    """
+    Reconstruction kernel for Filtered Back Projection (FBP) algorithm with receiving angle limit.
+    """
     for i, j, k in ti.ndrange(num_x, num_y, num_z):
         for n in ti.ndrange(num_detectors):
             dx = x_start + i * res - detector_location[n, 0]
@@ -99,3 +108,9 @@ def recon_kernel_fbp(
                 * angle_cos
                 / d**2
             )
+
+
+# -------------------------------------------------------------------------------------------------
+# More photoacoustic computed tomography reconstruction algorithms or some further analysis
+# can be realized and performed based on your specific requirements easily by taichi.
+# -------------------------------------------------------------------------------------------------
