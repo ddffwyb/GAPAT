@@ -34,6 +34,18 @@ def read_all_dat_into_a_matrix(data_path, data_type, num_times, num_channels):
     return data
 
 
+def read_one_dat_into_a_matrix(data_path, data_type, num_times, num_channels):
+    """
+    Read one .dat file into a matrix if the raw data has been rearranged into the standard format,
+    which is a matrix with shape (num_channels, num_times), and each row is the signal from one detector.
+    """
+    dtype = np.int16 if data_type == "int16" else np.float32
+    data = np.fromfile(data_path, dtype=dtype).reshape(num_times, num_channels).T
+    # For idx calculating, make idx not out of bounds
+    data[:, [0, 1, num_times - 2, num_times - 1]] = 0
+    return data
+
+
 def calculate_detector_location(
     num_detectors, num_channels, detector_interval_x, detector_interval_y
 ):
