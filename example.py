@@ -6,7 +6,7 @@ import scipy.io as sio
 from src.algorithms import recon_kernel_das, recon_kernel_angle, recon_kernel_fbp
 from src.utils import read_config, recon_single, recon_multi
 
-kernel = recon_kernel_fbp
+kernel = recon_kernel_das
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
