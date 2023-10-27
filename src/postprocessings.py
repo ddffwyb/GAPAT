@@ -2,6 +2,31 @@ import bm3d
 import cv2
 import numpy as np
 import scipy.ndimage.filters as filters
+import scipy.signal as signal
+
+
+def hilbert_transform(arr, axis=-1):
+    """
+    Apply Hilbert transform on a 2D or 3D array along a specified dimension
+    and return the absolute value of the transformed array. Which can be used to
+    process the original data or the reconstructed data into the envelope to
+    make sure the data is positive.
+
+    Args:
+        arr: numpy.ndarray. Input array which can be either 2D or 3D.
+        axis: int, optional. The axis along which the Hilbert transform will be applied.
+        Default is the last axis (-1).
+
+    Returns:
+        numpy.ndarray: The absolute value of the Hilbert transformed array.
+    """
+    # Checking the input array.
+    if len(arr.shape) not in [2, 3]:
+        raise ValueError("Input array should be either 2D or 3D.")
+    # Applying the Hilbert transform along the specified axis.
+    transformed = signal.hilbert(arr, axis=axis)
+    # Returning the absolute value of the transformed array.
+    return np.abs(transformed)
 
 
 def bm3d_denoise_2d(img, noise_std):
@@ -43,7 +68,7 @@ def frangi_filter_2d(
         black_ridges (bool): Whether to enhance black ridges or white ridges.
 
     Returns:
-        ndarray: The filtered image.
+        numpy.ndarray: The filtered image.
     """
     # Calculate the Hessian matrix at each scale
     Dxx_list = []
