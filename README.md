@@ -1,8 +1,8 @@
-# Comprehensive-Framework-for-Developing-GPU-Accelerated-Image-Reconstruction-in-PACT
+# A comprehensive framework of GPU-accelerated image reconstruction for photoacoustic computed tomography
 
 The repository provides code of the paper with the same name as this repository.
 
-> Comprehensive Framework for Developing GPU-Accelerated Image Reconstruction in Photoacoustic Computed Tomography.
+> A comprehensive framework of GPU-accelerated image reconstruction for photoacoustic computed tomography.
 
 Photoacoustic Computed Tomography (PACT) is a promising non-invasive imaging technique for both life science and clinical implementations. To achieve fast imaging speed, various arrays that have hundreds to thousands of ultrasound transducer (UST) elements are being installed on the modern PACT systems, and the element number continues to increase. However, large number of UST elements with parallel data acquisition could generate, a massive data size, making it very challenging to realize fast image reconstruction. Although several groups have developed GPU-accelerated method for PACT, there lacks an explicit step-by-step description for various hardware platforms. In this study, we propose a comprehensive framework for developing GPU-accelerated PACT image reconstruction, leveraging widely accessible open-source parallel computing tools, including Python multiprocessing-based parallelism, Taichi Lang for Python, CUDA, and possible other backends. We demonstrate that our framework promotes significant performance of PACT reconstruction, enabling faster analysis and real-time applications. Besides, we also described how to realize parallel computing on various hardware configurations, in-cluding multicore CPU, single GPU, and multiple GPUs platform. Notably, our framework can achieve an effective rate of approximately 871 times faster when reconstructing large-scale 3D PACT images on a dual-GPU platform compared to a 24-core workstation CPU. By optimizing the organization of data, refining the indexing of the DAS algorithm, and setting precompiled pa-rameters, we maximize the utilization and occupancy of the GPU as well as multi-GPU configu-rations, among others. Besides this manuscript, we uploaded example source codes to the GitHub for everyone to learn and use. Our approach allows for easy adoption and adaptation by the re-search community, fostering implementations of PACT for both life science and medicine.
 
@@ -11,13 +11,13 @@ Photoacoustic Computed Tomography (PACT) is a promising non-invasive imaging tec
 The code requires `python>=3.8`, and pre-installing CUDA on your computer is strongly recommended. Firstly clone the repository locally.
 
 ```
-git clone https://github.com/ddffwyb/Comprehensive-Framework-for-Developing-GPU-Accelerated-Image-Reconstruction-in-PACT.git
+git clone https://github.com/ddffwyb/A-comprehensive-framework-of-GPU-accelerated-image-reconstruction-for-PACT.git
 ```
 
 Then install the dependencies listed in the `requirements.txt` file.
 
 ```
-cd Comprehensive-Framework-for-Developing-GPU-Accelerated-Image-Reconstruction-in-PACT
+cd A-comprehensive-framework-of-GPU-accelerated-image-reconstruction-for-PACT
 pip install -r requirements.txt
 ```
 
