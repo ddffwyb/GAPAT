@@ -43,7 +43,7 @@ python example.py --config_path config/config1.yaml --result_path recon.mat
 | :------------: | :---: | :----: | :------------: | :----------: |
 |      DAS       | 3034s | 606.6s |     13.2s      |    10.8s     |
 | DAS with Angle Limit |   /   |   /    |     13.3s      |    10.9s     |
-|      BP       |   /   |   /    |     13.8s      |    11.1s     |
+|      FBP       |   /   |   /    |     13.8s      |    11.1s     |
 
 ### 600x600x200 Grids
 
@@ -51,7 +51,7 @@ python example.py --config_path config/config1.yaml --result_path recon.mat
 | :------------: | :----: | :-----: | :------------: | :----------: |
 |      DAS       | 43784s | 6044.7s |     100.0s     |    55.0s     |
 | DAS with Angle Limit |   /    |    /    |     100.5s     |    55.4s     |
-|      BP       |   /    |    /    |     103.7s     |    56.5s     |
+|      FBP       |   /    |    /    |     103.7s     |    56.5s     |
 
 ### 1200x1200x400 Grids
 
@@ -59,4 +59,4 @@ python example.py --config_path config/config1.yaml --result_path recon.mat
 | :------------: | :-----: | :------: | :------------: | :----------: |
 |      DAS       | 335259s | 44690.4s |     749.7s     |    385.1s    |
 | DAS with Angle Limit |    /    |    /     |     757.3s     |    392.5s    |
-|      BP       |    /    |    /     |     781.8s     |    402.5s    |
+|      FBP       |    /    |    /     |     781.8s     |    402.5s    |
