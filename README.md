@@ -11,13 +11,13 @@ Photoacoustic Computed Tomography (PACT) is a promising non-invasive imaging tec
 The code requires `python>=3.8`, and pre-installing CUDA on your computer is strongly recommended. Firstly clone the repository locally.
 
 ```
-git clone https://github.com/ddffwyb/A-comprehensive-framework-of-GPU-accelerated-image-reconstruction-for-PACT.git
+git clone https://github.com/ddffwyb/PACT-GPU.git
 ```
 
 Then install the dependencies listed in the `requirements.txt` file.
 
 ```
-cd A-comprehensive-framework-of-GPU-accelerated-image-reconstruction-for-PACT
+cd PACT-GPU
 pip install -r requirements.txt
 ```
 
