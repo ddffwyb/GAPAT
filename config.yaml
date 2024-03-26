@@ -13,7 +13,7 @@ z_start: 10.0e-3
 z_end: 50.0e-3
 detector_interval_x: 0.10e-3
 detector_interval_y: 0.50e-3
-data_path: !!str data/synthetic_planar_array
+data_path: !!str data
 data_type: int16
 device: gpu
 num_devices: 1

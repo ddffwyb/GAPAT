@@ -32,7 +32,7 @@ pip install jupyter matplotlib
 We provide an example of the in vivo experimental by using a synthetic planar array, which is consistent with the experiments and parameters described in Section 3.2 of the paper. In the `config` folder, we place configuration files in `.yaml` format. In the `data` folder, we provide a set of PACT data of synthetic planar scanning arms. In the `src` folder, we provide the source code of our framework. The `example.py` file provides a demonstration, and the usage method of command line is as follows.
 
 ```
-python example.py --config_path config/config1.yaml --result_path recon.mat
+python example.py --config_file config.yaml --result_file recon.mat --kernel das
 ```
 
 ## Results

@@ -13,20 +13,37 @@ if __name__ == "__main__":
         description="Reconstruct signal with config file and save the result to specified path"
     )
     parser.add_argument(
-        "--config_path",
+        "--config_file",
         type=str,
-        default="config/config1.yaml",
-        help="Path to the config file",
+        default="config.yaml",
+        help="Path to the config file with yaml format",
     )
     parser.add_argument(
-        "--result_path", type=str, default="recon.mat", help="Path to save the result"
+        "--result_file",
+        type=str,
+        default="recon.mat",
+        help="Path to save the reconstruction result with mat format",
+    )
+    parser.add_argument(
+        "--kernel",
+        type=str,
+        default="das",
+        choices=["das", "angle", "fbp"],
+        help="Reconstruction kernel, including 'das', 'angle', 'fbp'",
     )
     args = parser.parse_args()
 
-    config_path = args.config_path
-    result_path = args.result_path
+    kernel_options = {
+        "das": recon_kernel_das,
+        "angle": recon_kernel_angle,
+        "fbp": recon_kernel_fbp,
+    }
 
-    config = read_config(config_path)
+    config_file = args.config_file
+    result_file = args.result_file
+    kernel = kernel_options[args.kernel]
+
+    config = read_config(config_file)
     num_devices = config["num_devices"]
     start = time.time()
     if num_devices == 1:
@@ -34,5 +51,5 @@ if __name__ == "__main__":
     else:
         signal_recon = recon_multi(config, kernel)
     end = time.time()
-    sio.savemat(result_path, {"signal_recon": signal_recon})
+    sio.savemat(result_file, {"signal_recon": signal_recon})
     print("Reconstruction time: {:.2f}s".format(end - start))

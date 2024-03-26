@@ -4,7 +4,7 @@ import taichi_glsl as ts
 
 from .utils import read_config
 
-config = read_config("config/config1.yaml")
+config = read_config("config.yaml")
 vs = config["vs"]
 fs = config["fs"]
 angle_cos_limit = config["angle_cos_limit"]
