@@ -1,19 +1,19 @@
-vs: 1500.0
-fs: 40.0e+6
-angle_cos_limit: 0.50
-num_channels: 256
-num_steps: 1380
-num_times: 2048
-res: 0.20e-3
-x_start: -10.0e-3
-x_end: 110.0e-3
-y_start: -10.0e-3
-y_end: 110.0e-3
-z_start: 10.0e-3
-z_end: 50.0e-3
-detector_interval_x: 0.10e-3
-detector_interval_y: 0.50e-3
-data_path: !!str data
-data_type: int16
-device: gpu
-num_devices: 1
+vs: 1500.0 # speed of sound, m/s
+fs: 40.0e+6 # sampling frequency, Hz
+angle_cos_limit: 0.50 # cosine of the maximum angle
+num_channels: 256 # number of channels
+num_steps: 1380 # number of scan steps
+num_times: 2048 # number of time samples
+res: 0.20e-3 # spacing of the reconstruction area grid, m
+x_start: -10.0e-3 # x start of the reconstruction area, m
+x_end: 110.0e-3 # x end of the reconstruction area, m
+y_start: -10.0e-3 # y start of the reconstruction area, m
+y_end: 110.0e-3 # y end of the reconstruction area, m
+z_start: 10.0e-3 # z start of the reconstruction area, m
+z_end: 50.0e-3 # z end of the reconstruction area, m
+detector_interval_x: 0.10e-3 # x interval of the detector, m
+detector_interval_y: 0.50e-3 # y interval of the detector, m
+data_path: !!str data # path to the raw data
+data_type: int16 # data type of the raw data
+device: gpu # device that algorathms run on, cpu or gpu
+num_devices: 1 # number of devices that algorithms run on, 1 or 2 or more
