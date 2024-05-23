@@ -23,13 +23,13 @@ The repository provides code of the paper with the same name as this repository.
 The code requires `python>=3.8`, and pre-installing CUDA on your computer is strongly recommended (no specific version requirement). Firstly clone the repository locally.
 
 ```
-git clone https://github.com/ddffwyb/PACT-GPU.git
+git clone https://github.com/ddffwyb/GAPAT.git
 ```
 
 Then install the dependencies listed in the `requirements.txt` file.
 
 ```
-cd PACT-GPU
+cd GAPAT
 pip install -r requirements.txt
 ```
 
