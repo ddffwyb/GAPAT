@@ -1,6 +1,5 @@
 import numpy as np
 import taichi as ti
-import taichi_glsl as ts
 
 from .utils import read_config
 
@@ -48,7 +47,7 @@ def recon_kernel_das(
             dx = x_start + i * res - detector_location[n, 0]
             dy = y_start + j * res - detector_location[n, 1]
             dz = z_start + k * res - detector_location[n, 2]
-            d = ts.length(ti.Vector([dx, dy, dz]))
+            d = ti.sqrt(dx**2 + dy**2 + dz**2)
             idx = ti.min(int(d / vs * fs), num_times - 2)
             signal_recon[i, j, k] += signal_backproj[n, idx] * dz / d**3
 
@@ -70,7 +69,7 @@ def recon_kernel_angle(
             dx = x_start + i * res - detector_location[n, 0]
             dy = y_start + j * res - detector_location[n, 1]
             dz = z_start + k * res - detector_location[n, 2]
-            d = ts.length(ti.Vector([dx, dy, dz]))
+            d = ti.sqrt(dx**2 + dy**2 + dz**2)
             angle_cos = dz / d
             idx = ti.min(int(d / vs * fs), num_times - 2) * int(
                 angle_cos > angle_cos_limit
@@ -95,7 +94,7 @@ def recon_kernel_fbp(
             dx = x_start + i * res - detector_location[n, 0]
             dy = y_start + j * res - detector_location[n, 1]
             dz = z_start + k * res - detector_location[n, 2]
-            d = ts.length(ti.Vector([dx, dy, dz]))
+            d = ti.sqrt(dx**2 + dy**2 + dz**2)
             angle_cos = dz / d
             idx = ti.min(int(d / vs * fs), num_times - 2) * int(
                 angle_cos > angle_cos_limit

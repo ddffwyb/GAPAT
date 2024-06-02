@@ -22,21 +22,23 @@ The repository provides code of the paper with the same name as this repository.
 
 The code requires `python>=3.8`, and pre-installing CUDA on your computer is strongly recommended (no specific version requirement). Firstly clone the repository locally.
 
-```
+```bash
 git clone https://github.com/ddffwyb/GAPAT.git
+cd GAPAT
+```
+
+We recommend using the `conda` environment to install the cuda toolkit. The following command installs the cuda toolkit.
+
+```bash
+conda create -n gapat python=3.9
+conda activate gapat
+conda install -c conda-forge cudatoolkit=11.8
 ```
 
 Then install the dependencies listed in the `requirements.txt` file.
 
-```
-cd GAPAT
+```bash
 pip install -r requirements.txt
-```
-
-The following optional dependencies are necessary for visualization.
-
-```
-pip install jupyter matplotlib
 ```
 
 ## Getting Started
