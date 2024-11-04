@@ -30,7 +30,7 @@ cd GAPAT
 We recommend using the `conda` environment to install the cuda toolkit. The following command installs the cuda toolkit.
 
 ```bash
-conda create -n gapat python=3.9
+conda create -n gapat python=3.9 -y
 conda activate gapat
 conda install -c conda-forge cudatoolkit=11.8
 ```
