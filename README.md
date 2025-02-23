@@ -43,7 +43,7 @@ pip install -r requirements.txt
 
 ## Getting Started
 
-We provide an example of the in vivo experimental by using a synthetic planar array, which is consistent with the experiments and parameters described in Section 3.2 of the paper. In the `config.yaml` file, we place a demo configuration file, and by setting the `device` parameter to `gpu` to activate GPU support (_Please do not rename the `config.yaml` file and just modify it with your own settings!_). In the `data` folder, we provide a set of PACT data of synthetic planar scanning arms. In the `src` folder, we provide the source code of our framework. The `example.py` file provides a demonstration, and the usage method of command line is as follows.
+We provide an example of the in vivo experimental by using a synthetic planar array, which is consistent with the experiments and parameters described in Section 3.2 of the paper. In the `config.yaml` file, we place a demo configuration file, and by setting the `device` parameter to `gpu` to activate GPU support (**_Please do not rename the `config.yaml` file and just modify it with your own settings!_**). In the `data` folder, we provide a set of PACT data of synthetic planar scanning arms. In the `src` folder, we provide the source code of our framework. The `example.py` file provides a demonstration, and the usage method of command line is as follows.
 
 ```
 python example.py --config_file config.yaml --result_file recon.mat --kernel das
