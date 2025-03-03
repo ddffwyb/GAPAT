@@ -4,6 +4,8 @@ The repository provides code of the paper with the same name as this repository.
 
 > A comprehensive framework of GPU-accelerated image reconstruction for photoacoustic computed tomography.
 
+Now we also provide the pypi package named `gapat` ([https://pypi.org/project/gapat/](https://pypi.org/project/gapat/) for more easily use. For details and documents, please read [README_pypi.md](./README_pypi.md).
+
 ## Abstract
 
 **Significance**: Photoacoustic Computed Tomography (PACT) is a promising non-invasive imaging technique for both life science and clinical implementations. To achieve fast imaging speed, modern PACT systems have equipped arrays that have hundreds to thousands of ultrasound transducer (UST) elements, and the element number continues to increase. However, large number of UST elements with parallel data acquisition could generate a massive data size, making it very challenging to realize fast image reconstruction. Although several research groups have developed GPU-accelerated method for PACT, there lacks an explicit and feasible step-by-step description of GPU-based algorithms for various hardware platforms.
