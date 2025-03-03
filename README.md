@@ -4,7 +4,7 @@ The repository provides code of the following paper with the same form and reali
 
 > Comprehensive framework of GPU-accelerated image reconstruction for photoacoustic computed tomography ([Link](https://www.spiedigitallibrary.org/journals/journal-of-biomedical-optics/volume-29/issue-06/066006/Comprehensive-framework-of-GPU-accelerated-image-reconstruction-for-photoacoustic-computed/10.1117/1.JBO.29.6.066006.full#_=_))
 
-Now we also provide the pypi package named `gapat` ([https://pypi.org/project/gapat/](https://pypi.org/project/gapat/)) for more easily use. For details and documents, please read [README_pypi.md](./README_pypi.md).
+Now we also provide the pypi package named `gapat` ([https://pypi.org/project/gapat/](https://pypi.org/project/gapat/)) for more easily use that can be installed by `pip`. For details and documents, please read [README_pypi.md](./README_pypi.md).
 
 ## Abstract
 
