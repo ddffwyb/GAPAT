@@ -103,13 +103,13 @@ save_mat("result.mat", "signal_recon", signal_recon)
 
 ### gapat.algorithms
 
-#### gapat.algorithms.recon(signal_backproj, detector_location, detector_normal, x_range, y_range, z_range, res, vs, fs, delay=0, method="das", device="gpu", num_devices=1, device_no=0, block_dim=512)
+> **gapat.algorithms.recon(signal_backproj, detector_location, detector_normal, x_range, y_range, z_range, res, vs, fs, delay=0, method="das", device="gpu", num_devices=1, device_no=0, block_dim=512)**
 
 Reconstruction of photoacoustic computed tomography.
 
-**Warning**: When using multi-device reconstruction, the function must be called on the main process.
+Warning: When using multi-device reconstruction, the function must be called on the main process.
 
-**Parameters**
+_Parameters_
 
 | Parameter           | Type         | Description                                                                                                                                     |
 | ------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -129,7 +129,7 @@ Reconstruction of photoacoustic computed tomography.
 | `device_no`         | `int`        | The device no to use when num_devices = 1. Default: 0.                                                                                          |
 | `block_dim`         | `int`        | The block dimension. Default: 512.                                                                                                              |
 
-**Returns**
+_Returns_
 
 | Parameter      | Type         | Description                                                                   |
 | -------------- | ------------ | ----------------------------------------------------------------------------- |
@@ -137,11 +137,11 @@ Reconstruction of photoacoustic computed tomography.
 
 ### gapat.processings
 
-#### gapat.processings.bandpass_filter(signal_matrix, fs, band_range, order=2, axis=0)
+> **gapat.processings.bandpass_filter(signal_matrix, fs, band_range, order=2, axis=0)**
 
 Bandpass filter the signal matrix.
 
-**Parameters**
+_Parameters_
 
 | Parameter       | Type         | Description                                                                                                                                               |
 | --------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -151,17 +151,17 @@ Bandpass filter the signal matrix.
 | `order`         | `int`        | The order of the filter. Default: 2.                                                                                                                      |
 | `axis`          | `int`        | The axis to filter. Default: 0. (Which will be applied to each detector.)                                                                                 |
 
-**Returns**
+_Returns_
 
 | Parameter                | Type         | Description                                                                          |
 | ------------------------ | ------------ | ------------------------------------------------------------------------------------ |
 | `filtered_signal_matrix` | `np.ndarray` | The filtered signal matrix.<br>Shape: (num_detectors, num_times). Dtype: np.float32. |
 
-#### gapat.processings.negetive_processing(signal_recon, method="zero", axis=0)
+> **gapat.processings.negetive_processing(signal_recon, method="zero", axis=0)**
 
 Process the negative signal.
 
-**Parameters**
+_Parameters_
 
 | Parameter      | Type         | Description                                                                                                                                                                                                                                                                     |
 | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -169,7 +169,7 @@ Process the negative signal.
 | `method`       | `str`        | The method to process the negative signal. Default: "zero". Options: "zero", "abs", "hilbert".<br>"zero": Set the negative signal to zero.<br>"abs": Take the absolute value of the negative signal.<br>"hilbert": Use the hilbert transform to get the envelope of the signal. |
 | `axis`         | `int`        | The axis to process when method is "hilbert". Default: 0.                                                                                                                                                                                                                       |
 
-**Returns**
+_Returns_
 
 | Parameter                | Type         | Description                                                                              |
 | ------------------------ | ------------ | ---------------------------------------------------------------------------------------- |
@@ -177,27 +177,27 @@ Process the negative signal.
 
 ### gapat.utils
 
-#### gapat.utils.load_mat(filename)
+> **gapat.utils.load_mat(filename)**
 
 Load .mat file and return a dictionary with variable names as keys, and loaded matrices as values.
 
-**Parameters**
+_Parameters_
 
 | Parameter  | Type  | Description                |
 | ---------- | ----- | -------------------------- |
 | `filename` | `str` | The path to the .mat file. |
 
-**Returns**
+_Returns_
 
 | Parameter | Type   | Description                                                              |
 | --------- | ------ | ------------------------------------------------------------------------ |
 | `data`    | `dict` | A dictionary with variable names as keys, and loaded matrices as values. |
 
-#### gapat.utils.save_mat(filename, varname, data)
+> **gapat.utils.save_mat(filename, varname, data)**
 
 Save data to .mat file with the given variable name.
 
-**Parameters**
+_Parameters_
 
 | Parameter  | Type         | Description                            |
 | ---------- | ------------ | -------------------------------------- |
@@ -205,11 +205,11 @@ Save data to .mat file with the given variable name.
 | `varname`  | `str`        | The variable name to save the data to. |
 | `data`     | `np.ndarray` | The data to save.                      |
 
-#### gapat.utils.load_dat(data_path, num_channels, num_times, dtype=np.int16, order="F", zero_set=True)
+> **gapat.utils.load_dat(data_path, num_channels, num_times, dtype=np.int16, order="F", zero_set=True)**
 
 Load all .dat files in the given directory and return a numpy array.
 
-**Parameters**
+_Parameters_
 
 | Parameter      | Type       | Description                                                                                                      |
 | -------------- | ---------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -220,17 +220,17 @@ Load all .dat files in the given directory and return a numpy array.
 | `order`        | `str`      | The order of the loaded data. Same as numpy.reshape order. "F" for Fortran order, "C" for C order. Default: "F". |
 | `zero_set`     | `bool`     | Whether to set the first and last two rows to 0.0. Default: True.                                                |
 
-**Returns**
+_Returns_
 
 | Parameter | Type         | Description                                                                           |
 | --------- | ------------ | ------------------------------------------------------------------------------------- |
 | `data`    | `np.ndarray` | The loaded data.<br>Shape: (num_channels \* num_files, num_times). Dtype: np.float32. |
 
-#### gapat.utils.calculate_detector_location(num_detectors, num_channels, detector_interval_x, detector_interval_y)
+> **gapat.utils.calculate_detector_location(num_detectors, num_channels, detector_interval_x, detector_interval_y)**
 
 Calculate the location of the detectors.
 
-**Parameters**
+_Parameters_
 
 | Parameter             | Type    | Description                                                                |
 | --------------------- | ------- | -------------------------------------------------------------------------- |
@@ -239,7 +239,7 @@ Calculate the location of the detectors.
 | `detector_interval_x` | `float` | The interval of the detectors in the x direction (scanning direction).     |
 | `detector_interval_y` | `float` | The interval of the detectors in the y direction (linear array direction). |
 
-**Returns**
+_Returns_
 
 | Parameter           | Type         | Description                                                                     |
 | ------------------- | ------------ | ------------------------------------------------------------------------------- |
