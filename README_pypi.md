@@ -103,7 +103,7 @@ save_mat("result.mat", "signal_recon", signal_recon)
 
 ### gapat.algorithms
 
-> **gapat.algorithms.recon(signal_backproj, detector_location, detector_normal, x_range, y_range, z_range, res, vs, fs, delay=0, method="das", device="gpu", num_devices=1, device_no=0, block_dim=512)**
+> **`gapat.algorithms.recon(signal_backproj, detector_location, detector_normal, x_range, y_range, z_range, res, vs, fs, delay=0, method="das", device="gpu", num_devices=1, device_no=0, block_dim=512)`**
 
 Reconstruction of photoacoustic computed tomography.
 
@@ -137,7 +137,7 @@ _Returns_
 
 ### gapat.processings
 
-> **gapat.processings.bandpass_filter(signal_matrix, fs, band_range, order=2, axis=0)**
+> **`gapat.processings.bandpass_filter(signal_matrix, fs, band_range, order=2, axis=0)`**
 
 Bandpass filter the signal matrix.
 
@@ -157,7 +157,7 @@ _Returns_
 | ------------------------ | ------------ | ------------------------------------------------------------------------------------ |
 | `filtered_signal_matrix` | `np.ndarray` | The filtered signal matrix.<br>Shape: (num_detectors, num_times). Dtype: np.float32. |
 
-> **gapat.processings.negetive_processing(signal_recon, method="zero", axis=0)**
+> **`gapat.processings.negetive_processing(signal_recon, method="zero", axis=0)`**
 
 Process the negative signal.
 
@@ -177,7 +177,7 @@ _Returns_
 
 ### gapat.utils
 
-> **gapat.utils.load_mat(filename)**
+> **`gapat.utils.load_mat(filename)`**
 
 Load .mat file and return a dictionary with variable names as keys, and loaded matrices as values.
 
@@ -193,7 +193,7 @@ _Returns_
 | --------- | ------ | ------------------------------------------------------------------------ |
 | `data`    | `dict` | A dictionary with variable names as keys, and loaded matrices as values. |
 
-> **gapat.utils.save_mat(filename, varname, data)**
+> **`gapat.utils.save_mat(filename, varname, data)`**
 
 Save data to .mat file with the given variable name.
 
@@ -205,7 +205,7 @@ _Parameters_
 | `varname`  | `str`        | The variable name to save the data to. |
 | `data`     | `np.ndarray` | The data to save.                      |
 
-> **gapat.utils.load_dat(data_path, num_channels, num_times, dtype=np.int16, order="F", zero_set=True)**
+> **`gapat.utils.load_dat(data_path, num_channels, num_times, dtype=np.int16, order="F", zero_set=True)`**
 
 Load all .dat files in the given directory and return a numpy array.
 
@@ -226,7 +226,7 @@ _Returns_
 | --------- | ------------ | ------------------------------------------------------------------------------------- |
 | `data`    | `np.ndarray` | The loaded data.<br>Shape: (num_channels \* num_files, num_times). Dtype: np.float32. |
 
-> **gapat.utils.calculate_detector_location(num_detectors, num_channels, detector_interval_x, detector_interval_y)**
+> **`gapat.utils.calculate_detector_location(num_detectors, num_channels, detector_interval_x, detector_interval_y)`**
 
 Calculate the location of the detectors.
 
